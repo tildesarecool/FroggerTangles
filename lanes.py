@@ -22,9 +22,12 @@ class Lane(GameRect, Sprite):
         self.width = width
         self.height = height
         self.color = color
+        
+        #self.rect = self.draw_rect()
 
     def draw(self):
         '''
         Drawing the lane(s): on the screen
         '''
         self.rect = self.draw_rect()
+        #self.rect
