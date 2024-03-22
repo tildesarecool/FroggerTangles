@@ -45,7 +45,7 @@ froggie = Frog(cmn.SCREEN_WIDTH // 2, cmn.SCREEN_HEIGHT - 55, cmn.cellWidth, cmn
 laneOne = Lane(
     0, 
     cmn.SCREEN_HEIGHT - (froggie.height * 6) - 20, 
-    cmn.SCREEN_WIDTH, 
+    cmn.SCREEN_WIDTH - 100, 
     froggie.height * 5, 
     cmn.SILVER
     )
@@ -55,7 +55,7 @@ sidewalkOne = Lane(
     #laneOne.draw_rect().top,
     #cmn.SCREEN_HEIGHT - (froggie.height * 8) ,
     laneOne.height - 45,
-    cmn.SCREEN_WIDTH,
+    cmn.SCREEN_WIDTH - 100,
     froggie.height * 1.5,
     cmn.GREY
     )

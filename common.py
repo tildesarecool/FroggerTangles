@@ -12,6 +12,7 @@ class Common():
         self.BLACK: str = '#000000'
         self.GREY: str = '#808080'
         self.GREEN: str = '#008000'
+        self.GREEN: str = '#00FF00'
         self.WHITE: str = '#FFFFFF'
         self.BLUEISH: str = (10, 150, 240)
         
