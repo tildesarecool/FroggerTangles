@@ -12,7 +12,7 @@ cmn = Common()
 
 
 import pygame as pyg
-from time import sleep
+#from time import sleep
 
 
 
@@ -50,10 +50,29 @@ froggie = Frog(
     #frogger = Frog(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 10, 100,  100, GREEN)
 class createLanes():
     def __init__(self) -> None:
-         pass
+         #pass
+         createLanes.drawLanes(self)
     
     
-    laneOne = Lane(
+    
+    sidewalkOne = Lane.draw(
+        #cmn.CENTER_X,
+        
+        0,
+        cmn.CENTER_Y - cmn.cellHeight * 2,
+        #0,
+        #100,
+        #laneOne.xpos,
+        #laneOne.draw_rect().top,
+        #cmn.SCREEN_HEIGHT - (froggie.height * 8) ,
+        #laneOne.height - 45,
+        #laneOne.ypos + froggie.height,
+        cmn.SCREEN_WIDTH,# - 50,
+        cmn.cellHeight * 1.5,
+        cmn.GREY
+        )
+    
+    laneOne = Lane.draw(
         #0, 
         40, # 40 px in from left side of screen
         cmn.SCREEN_HEIGHT - (froggie.height * 6) - 20, # how many px up from bottom of screen
@@ -64,20 +83,9 @@ class createLanes():
     #laneOne.rect.x = laneOne.xpos
     #laneOne.rect.y = laneOne.ypos
 
-    sidewalkOne = Lane(
-        #0,
-        #100,
-        laneOne.xpos,
-        #laneOne.draw_rect().top,
-        #cmn.SCREEN_HEIGHT - (froggie.height * 8) ,
-        laneOne.height - 45,
-        #laneOne.ypos + froggie.height,
-        cmn.SCREEN_WIDTH - 50,
-        froggie.height * 1.5,
-        cmn.GREY
-        )
 
-    EndZone = Lane(
+
+    EndZone = Lane.draw(
         0,
         #laneOne.draw_rect().top,
         #cmn.SCREEN_HEIGHT - (froggie.height * 8) ,
@@ -86,6 +94,37 @@ class createLanes():
         froggie.height * 1.5,
         cmn.AQUA
         )
+    
+    def drawLanes(self):
+        
+        SideWalkRect = self.sidewalkOne.draw_rect()
+        SideWalkRect.x = self.sidewalkOne.xpos
+        SideWalkRect.y = self.sidewalkOne.ypos
+        
+        
+        laneOneRect = self.laneOne.draw_rect()
+        #laneOneRect.top = SideWalkRect.bottom + 1
+        laneOneRect.top = SideWalkRect.bottom # self.laneOne.ypos + (self.sidewalkOne.width)
+        laneOneRect.x = self.laneOne.xpos
+        laneOneRect.y = self.laneOne.ypos
+                
+        print(f"value of self.laneOneRect.top is {laneOneRect.top} and value of SideWalkRect.bottom is {SideWalkRect.bottom}")
+        print(f"value of self.laneOne.ypos is {self.laneOne.ypos}")
+        #self.laneOne.xpos = laneOneRect.x
+        
+        
+        #self.laneOne.ypos = laneOneRect.y
+        
+        
+        #laneOneRect.x = self.sidewalkOne.xpos
+        #laneOneRect.y = self.sidewalkOne.ypos
+        
+        
+
+        
+        #pass
+
+
 
 
 class createVehicles():
@@ -98,12 +137,12 @@ class createVehicles():
         froggie.width * 3, 
         froggie.height * 1.5,
         cmn.WHITE,
-        "right" # it works with "left" at least
+        "right".lower() # it works with "left" at least
         )
     if regCar.dir == "left":
         regCar.rect.left = cmn.SCREEN_WIDTH - 50
     elif regCar.dir == "right":
-        regCar.rect.right = -2
+        regCar.rect.right = 0
 
     regBus = Car(
         0,
@@ -113,19 +152,28 @@ class createVehicles():
         cmn.BLACK,
         "left" # new parameter -  should probably update addtraffic() below too
         )
-
+    #regBus.rect.bottom # no errors form this line. not sure what that means
 
 
 #regBus.xpos = regCar.xpos - 60
-carsGroup = Group()
 
 
 
-carsGroup.add(createVehicles.regCar, createVehicles.regBus)#, regBus)
 
 def addTraffic():
+    
+    carsGroup = Group()
+    carsGroup.add(createVehicles.regCar, createVehicles.regBus)#, regBus)
+    
     #carsGroup.draw(disp)
+    
+    ##### these two lines seem similar but the first one with 
+    # draw_rect() the regcar shows up while the second one with
+    # just regcar.rect everything runs and the console output is the same
+    # but no rectangle is visable. I go with the draw_rect(), then
     regCarRect = createVehicles.regCar.draw_rect()
+    #regCarRect = createVehicles.regCar.rect
+    
     regCarRect.y = cmn.SCREEN_HEIGHT - (froggie.height * 6) - 15
     #regCarRect.x = cmn.SCREEN_WIDTH - createVehicles.regCar.width - 15
     
@@ -153,7 +201,7 @@ def addTraffic():
     
 
 def main() -> None:
-    
+    #putInLanes = createLanes()
     while True:
         for event in pyg.event.get():
             if event.type == pyg.QUIT:
@@ -163,13 +211,20 @@ def main() -> None:
                 pyg.quit()
                 return
         #dsp.fill((10, 150, 240))
+
         disp.fill(cmn.BLUEISH)
         #dsp.fill('#00000080')
-        createLanes.sidewalkOne.draw()
-        createLanes.laneOne.draw()
+        
+        ### these two were working
+        #createLanes.sidewalkOne.draw()
+        #createLanes.laneOne.draw()
+        
+        createLanes()
+        
+        
         createLanes.EndZone.draw()
         
-        addTraffic()
+        #addTraffic()
         
         #createVehicles.regCar.draw()
         #regBus.draw()

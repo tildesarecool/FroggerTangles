@@ -24,8 +24,8 @@ class Common():
         self.cellWidth = 50
         self.cellHeight = 50
         
-        self.center_x = self.SCREEN_WIDTH / 2
-        self.center_y = self.SCREEN_HEIGHT / 2
+        self.CENTER_X = self.SCREEN_WIDTH // 2
+        self.CENTER_Y = self.SCREEN_HEIGHT // 2
 
     def screenInfo(self):
         self.dsp = pyg.display.set_mode(

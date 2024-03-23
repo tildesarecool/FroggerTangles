@@ -49,7 +49,7 @@ class Car(GameRect, Sprite):
 
     def draw(self):
         '''
-        Drawing the frog: start at bottom/middle
+        Drawing the vehicles. 
         '''
         #self.rect = self.draw_rect()
         #self.update()

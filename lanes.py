@@ -12,22 +12,30 @@ cmn = Common()
 
 class Lane(GameRect, Sprite): 
     '''Rectangles for background to represent lanes'''
-    def __init__(self, xpos, ypos, width, height, color) -> None:
+    def __init__(self) -> None:
+        super().__init__( xpos, ypos, width, height, color)
         Sprite.__init__(self)
-        super().__init__(xpos, ypos, width, height, color)
+        #
+#        pass
+    #   self.xpos = xpos
+    #   self.ypos = ypos
+    #   #self.ypos_start = ypos
+    #   self.width = width
+    #   self.height = height
+    #   self.color = color
+        
+        #self.rect = self.draw_rect()
 
+    def draw(self, xpos, ypos, width, height, color):
+        '''
+        Drawing the lane(s): on the screen
+        '''
+        #
+        self.rect = self.draw_rect()
+        #self.rect
         self.xpos = xpos
         self.ypos = ypos
         #self.ypos_start = ypos
         self.width = width
         self.height = height
         self.color = color
-        
-        #self.rect = self.draw_rect()
-
-    def draw(self):
-        '''
-        Drawing the lane(s): on the screen
-        '''
-        self.rect = self.draw_rect()
-        #self.rect
