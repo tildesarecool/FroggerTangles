@@ -95,21 +95,23 @@ class createVehicles():
     regCar = Car(
         0,
         0,
-        froggie.width * 2, 
-        froggie.height,
-        cmn.WHITE
+        froggie.width * 3, 
+        froggie.height * 1.5,
+        cmn.WHITE,
+        "right" # it works with "left" at least
         )
-
-    regCar.rect.left = cmn.SCREEN_WIDTH - 50
-
-
+    if regCar.dir == "left":
+        regCar.rect.left = cmn.SCREEN_WIDTH - 50
+    elif regCar.dir == "right":
+        regCar.rect.right = -2
 
     regBus = Car(
         0,
         0,
-        froggie.width * 3, 
-        froggie.height,
-        cmn.BLACK
+        froggie.width * 4, 
+        froggie.height * 1.5,
+        cmn.BLACK,
+        "left" # new parameter -  should probably update addtraffic() below too
         )
 
 
