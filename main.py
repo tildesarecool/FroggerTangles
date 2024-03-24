@@ -48,68 +48,73 @@ froggie = Frog(
     cmn.GREEN
     )
     #frogger = Frog(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 10, 100,  100, GREEN)
+    
+    
 class createLanes():
     def __init__(self) -> None:
-         #pass
-         createLanes.drawLanes(self)
-    
-    
-    
-    sidewalkOne = Lane.draw(
-        #cmn.CENTER_X,
-        
-        0,
-        cmn.CENTER_Y - cmn.cellHeight * 2,
-        #0,
-        #100,
-        #laneOne.xpos,
-        #laneOne.draw_rect().top,
-        #cmn.SCREEN_HEIGHT - (froggie.height * 8) ,
-        #laneOne.height - 45,
-        #laneOne.ypos + froggie.height,
-        cmn.SCREEN_WIDTH,# - 50,
-        cmn.cellHeight * 1.5,
-        cmn.GREY
-        )
-    
-    laneOne = Lane.draw(
-        #0, 
-        40, # 40 px in from left side of screen
-        cmn.SCREEN_HEIGHT - (froggie.height * 6) - 20, # how many px up from bottom of screen
-        cmn.SCREEN_WIDTH - 50, # the width of the screen minus 50 px
-        froggie.height * 5, # 5 times the height of the frog. kind of arbitrary
-        cmn.SILVER # predefined color
-        )
-    #laneOne.rect.x = laneOne.xpos
-    #laneOne.rect.y = laneOne.ypos
+         # GPT Note:
+         # Make sure to call drawLanes() after initializing the createLanes 
+         # object to position the lanes properly.
+         #createLanes.drawLanes(self)
+       
+        self.sidewalkOne = Lane(
+            0,
+            cmn.CENTER_Y - cmn.cellHeight * 2,
 
-
-
-    EndZone = Lane.draw(
-        0,
-        #laneOne.draw_rect().top,
-        #cmn.SCREEN_HEIGHT - (froggie.height * 8) ,
-        0,
-        cmn.SCREEN_WIDTH,
-        froggie.height * 1.5,
-        cmn.AQUA
-        )
+            cmn.SCREEN_WIDTH,
+            cmn.cellHeight * 1.5,
+            cmn.GREY
+            )
+        self.laneOne = Lane(
+            
+           #0, 
+            0, # 40 px in from left side of screen
+            self.sidewalkOne.ypos - (self.sidewalkOne.height),#cmn.CENTER_Y,# - cmn.cellHeight * 2,#cmn.SCREEN_HEIGHT - (froggie.height * 6) - 20, # how many px up from bottom of screen
+            cmn.SCREEN_WIDTH,# - 50, # the width of the screen minus 50 px
+            froggie.height * 5, # 5 times the height of the frog. kind of arbitrary
+            cmn.SILVER # predefined color
+            )
+   
+        self.EndZone = Lane(
+            0,
+            #laneOne.draw_rect().top,
+            #cmn.SCREEN_HEIGHT - (froggie.height * 8) ,
+            0,
+            cmn.SCREEN_WIDTH,
+            cmn.cellHeight * 1.5,
+            cmn.AQUA
+            )
     
     def drawLanes(self):
         
+                                        
+        
+
+        #createLanes.laneOne().xpos = 0
+        self.laneOne.ypos = (cmn.SCREEN_HEIGHT - self.laneOne.height - (cmn.cellHeight * 1.5))
+        laneOneRect = self.laneOne.draw_rect()
+        #laneOneRect.top = SideWalkRect.bottom + 1
+         # self.laneOne.ypos + (self.sidewalkOne.width)
+
+        #laneOneRect.y = self.laneOne.ypos
+        
+################################################################
+
+        #self.sidewalkOne.ypos = cmn.cellHeight * 2
         SideWalkRect = self.sidewalkOne.draw_rect()
         SideWalkRect.x = self.sidewalkOne.xpos
         SideWalkRect.y = self.sidewalkOne.ypos
         
         
-        laneOneRect = self.laneOne.draw_rect()
-        #laneOneRect.top = SideWalkRect.bottom + 1
-        laneOneRect.top = SideWalkRect.bottom # self.laneOne.ypos + (self.sidewalkOne.width)
+        laneOneRect.y = SideWalkRect.bottom
         laneOneRect.x = self.laneOne.xpos
-        laneOneRect.y = self.laneOne.ypos
+        #laneOneRect.top = SideWalkRect.bottom
+        
+        
+        EndZoneRect = self.EndZone.draw_rect()
                 
-        print(f"value of self.laneOneRect.top is {laneOneRect.top} and value of SideWalkRect.bottom is {SideWalkRect.bottom}")
-        print(f"value of self.laneOne.ypos is {self.laneOne.ypos}")
+        #print(f"value of self.laneOneRect.top is {laneOneRect.top} and value of SideWalkRect.bottom is {SideWalkRect.bottom}")
+        #print(f"value of self.laneOne.ypos is {self.laneOne.ypos}")
         #self.laneOne.xpos = laneOneRect.x
         
         
@@ -201,7 +206,7 @@ def addTraffic():
     
 
 def main() -> None:
-    #putInLanes = createLanes()
+    putInLanes = createLanes()
     while True:
         for event in pyg.event.get():
             if event.type == pyg.QUIT:
@@ -219,10 +224,10 @@ def main() -> None:
         #createLanes.sidewalkOne.draw()
         #createLanes.laneOne.draw()
         
-        createLanes()
+        putInLanes.drawLanes()
         
         
-        createLanes.EndZone.draw()
+        #createLanes.EndZone.draw()
         
         #addTraffic()
         
