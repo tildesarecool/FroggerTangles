@@ -5,10 +5,13 @@ This is something of an attempt to create a rudimentary version of "Frogger" usi
 
 The green square is supposed to be the frog. 
 
-The current status is attempting proper placement of the "lanes" for the cars, safe sidewalk and river where the logs will eventually go. I also have an "end zone" where the win condition will eventually go.
+First I worked on then "lanes" which are just rectangles other rectangles can over lap. I had a first lane for various rows of traffic, then above that a "safe sidewalk". Above that I just the back ground color for water where thing like logs will be going and finally the "endzone" to provide the win condition.
 
-I was trying to create the lanes and rectangles etc relative to each other to make some semblance of resolution indipencance. Although I'm sure now I should bother with thinking of that at this stage. For instances lane one will start at "screen height - (2 * frog height) and the lane height will be "frog height * 3.5". Then the safe side walk's "bottom" will start the the "top" of sidewalk one and have a height of "frog * 1.5". So on and so forth. Like I said it's more theoretical at this point.
+I just about had the lanes position how I wanted when I decided to work on vehicles. After working on making a white rectangle move right/left and repeat for a long time, I decided to work on lanes again. 
 
-When I eventually get to the vehicles section I may just figure out if I can utilize a timer with the Clock() method. Have to see if that is a good approach or not.
+And now, finally, I think I'm satisfied with how the lanes are positioning relative to each other.
 
-It did eventually occur to me that the frog is supposed to "hop" e.g. move some amount of space and stop, then another amound of space and stop. Right now it's just repeats moving as long as the 'w' key is held. Eventually I'll figure out how fix this.
+So it's back to vehicles again. I when last I worked on them I had one moving left/right and repeating but moving right/left wouldn't work. Perhaps this time I'll succeed.
+
+
+
