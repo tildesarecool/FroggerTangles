@@ -27,7 +27,7 @@ from pygame.sprite import Group
 #import frog
 from frog import Frog
 from lanes import Lane
-from cars import Car
+from vehicles import Vehicle
 
 pyg.init()
 
@@ -136,20 +136,20 @@ class createVehicles():
     def __init__(self) -> None:
          pass
 
-    regCar = Car(
+    regCar = Vehicle(
         0,
         0,
         froggie.width * 3, 
         froggie.height * 1.5,
         cmn.WHITE,
-        "right".lower() # it works with "left" at least
+        "left".lower() # it works with "left" at least
         )
     if regCar.dir == "left":
         regCar.rect.left = cmn.SCREEN_WIDTH - 50
     elif regCar.dir == "right":
         regCar.rect.right = 0
 
-    regBus = Car(
+    regBus = Vehicle(
         0,
         0,
         froggie.width * 4, 
@@ -167,8 +167,8 @@ class createVehicles():
 
 def addTraffic():
     
-    carsGroup = Group()
-    carsGroup.add(createVehicles.regCar, createVehicles.regBus)#, regBus)
+    vehicleGroup = Group()
+    vehicleGroup.add(createVehicles.regCar, createVehicles.regBus)#, regBus)
     
     #carsGroup.draw(disp)
     
@@ -179,7 +179,7 @@ def addTraffic():
     regCarRect = createVehicles.regCar.draw_rect()
     #regCarRect = createVehicles.regCar.rect
     
-    regCarRect.y = cmn.SCREEN_HEIGHT - (froggie.height * 6) - 15
+    regCarRect.y = cmn.SCREEN_HEIGHT - (cmn.cellHeight * 6) - 15
     #regCarRect.x = cmn.SCREEN_WIDTH - createVehicles.regCar.width - 15
     
     
@@ -229,7 +229,7 @@ def main() -> None:
         
         #createLanes.EndZone.draw()
         
-        #addTraffic()
+        addTraffic()
         
         #createVehicles.regCar.draw()
         #regBus.draw()

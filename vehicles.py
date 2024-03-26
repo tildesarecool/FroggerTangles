@@ -13,7 +13,7 @@ cmn = Common()
 
 
 
-class Car(GameRect, Sprite): 
+class Vehicle(GameRect, Sprite): 
     def __init__(self, xpos, ypos, width, height, color, dir) -> None:
         '''
         xpos: x position
