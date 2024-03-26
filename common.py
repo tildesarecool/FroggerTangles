@@ -1,11 +1,15 @@
 import pygame as pyg
+#from lanes import Lane
 pyg.init()
 
 # Initialize pygame and create the display surface
+#mainLane = Lane()
 
 class Common():
     '''Command variables and settings'''
     def __init__(self):
+        
+        #self.vehicleHeight
 
         self.BLACK: str = '#000000'
         self.SILVER: str = '#C0C0C0'
