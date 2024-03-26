@@ -35,7 +35,7 @@ class Vehicle(GameRect, Sprite):
         self.dir = dir
         
         self.StartLeftPos = 0
-        self.StartRightPos = cmn.SCREEN_WIDTH - 50
+        self.StartRightPos = cmn.SCREEN_WIDTH + 50 # should be 50 px to the right of the screen. right?
 
         
         # I moved this from the draw method to this init() method and nothing is apparently broken 
@@ -137,12 +137,12 @@ class Vehicle(GameRect, Sprite):
 class createVehicles():
     def __init__(self) -> None:
          pass
-
+     
     regCar = Vehicle(
         0,
         0,
         cmn.cellWidth * 3, 
-        cmn.cellHeight  * 1.5,
+        cmn.vehicleHeight,
         cmn.WHITE,
         "left".lower() # it works with "left" at least
         )
@@ -156,7 +156,7 @@ class createVehicles():
         0,
         0,
         cmn.cellWidth * 4, 
-        cmn.cellHeight  * 1.5,
+        cmn.vehicleHeight,
         cmn.BLACK,
         "left".lower() # new parameter -  should probably update addtraffic() below too
         )
@@ -166,7 +166,7 @@ class createVehicles():
         cmn.SCREEN_WIDTH + cmn.cellWidth * 2,
         0,
         cmn.cellWidth * 3,
-        cmn.cellHeight * 1.5,
+        cmn.vehicleHeight,
         cmn.LIME,
         "left".lower()
     )

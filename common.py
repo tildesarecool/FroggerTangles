@@ -9,8 +9,6 @@ class Common():
     '''Command variables and settings'''
     def __init__(self):
         
-        #self.vehicleHeight
-
         self.BLACK: str = '#000000'
         self.SILVER: str = '#C0C0C0'
         self.BLACK: str = '#000000'
@@ -30,6 +28,8 @@ class Common():
         
         self.CENTER_X = self.SCREEN_WIDTH // 2
         self.CENTER_Y = self.SCREEN_HEIGHT // 2
+        
+        self.vehicleHeight = self.cellHeight * 1.5
 
     def screenInfo(self):
         self.dsp = pyg.display.set_mode(

@@ -5,13 +5,13 @@ This is something of an attempt to create a rudimentary version of "Frogger" usi
 
 The green square is supposed to be the frog. 
 
-First I worked on then "lanes" which are just rectangles other rectangles can over lap. I had a first lane for various rows of traffic, then above that a "safe sidewalk". Above that I just the back ground color for water where thing like logs will be going and finally the "endzone" to provide the win condition.
+With my lanes solution in place it was fortunately easy to re-adjust the height of the main traffic lane: 3 times the vehicle height plus 30. This way I can have 3 lanes of traffic with some space between each row of traffic. 
 
-I just about had the lanes position how I wanted when I decided to work on vehicles. After working on making a white rectangle move right/left and repeat for a long time, I decided to work on lanes again. 
+As for adding the traffic I still can't get it work quite right. This lead to some re-thinking and a mini-refactoring of the appraoch. I was doing too much in the main.py file for instance so I moved a lot of functionality over to a separate py file. 
 
-And now, finally, I think I'm satisfied with how the lanes are positioning relative to each other.
+My initial idea was the seperate instancess of the vehicle class consisting of at least cars and busses with perhaps other types later: the vehicles types would be randomized so there would be a different combination of vehicle types the as the game played. But now I'm re-thinking the approach to just have one long row of vehicles and the whole thing is a loop. That has some issues too. I'll keep thinking about it. The three test vehicles I have now transition smoothly off the side on the left but just kind of pop into place on right. So I'm still kind of thinking about it. 
 
-So it's back to vehicles again. I when last I worked on them I had one moving left/right and repeating but moving right/left wouldn't work. Perhaps this time I'll succeed.
+The script works that far for the one car. The second two vehicles are just stuck in place. So you could say the script is broken.
 
 
 
