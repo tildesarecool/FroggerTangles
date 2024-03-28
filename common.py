@@ -30,6 +30,8 @@ class Common():
         self.CENTER_Y = self.SCREEN_HEIGHT // 2
         
         self.vehicleHeight = self.cellHeight * 1.5
+        
+        self.screen_rect = self.screenInfo().get_rect()
 
     def screenInfo(self):
         self.dsp = pyg.display.set_mode(

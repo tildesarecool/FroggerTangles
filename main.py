@@ -87,6 +87,7 @@ def addTraffic():
     
     createVehicles.regBus.ypos = regBusRect.y
     createVehicles.regBus.xpos = regBusRect.x
+    createVehicles.regBus.draw()
 ###################################################
 
     limeCarRect = createVehicles.LimeCar.draw_rect()
@@ -110,6 +111,7 @@ def main() -> None:
         createVehicles.regBus, 
         createVehicles.LimeCar
     )#, regBus)
+#    vehicleGroup.u
     
     disp = cmn.screenInfo() # DO NOT MOVE OR COMMENT THIS
     

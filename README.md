@@ -1,9 +1,40 @@
 # FroggerTangles
+
+I decided to keep my updates history from one day to the next. Maybe it will show some part of my evolving thought process
 I'm upgrading my box-prototype-frogger to its own repo. It's frogger but made of rectangles. 
 
 This is something of an attempt to create a rudimentary version of "Frogger" using nothing but rectangles in pygame. The rectangles aren't even surfaces, in fact. Everything's a rectangle and that's it.
 
 The green square is supposed to be the frog. 
+
+---
+
+I thought about this a little over night. I don't think I want to spawn in multiple vehicles like it is now. 
+
+Keeping in mind I only have 3 vehicles at the moment. In one continuous line of vehicles this wouldn't really be an issue. 
+
+What I'm saying is: right now the three vehicles start on the right and move left. When the last car goes off screen *all three* vehicles pop into existence at the same time at a specific point. Well technically even that is broken at the moment but you get what I'm 
+saying. I don't need them all to pop into existence at the same time, I need a never ending loop of vehicles starting off the screen to the right and scrolling to the left.
+
+So what I *really* need is for each individual car to spawn off screen, roll into the screen on the right, scroll off the left and when it disappears off the left get deleted entirely. 
+
+Or each individual car to get reset in a queue to eventually scroll across the screen. 
+
+Either way I think I need to operate on an individual car basis rather than a group of cars at a time. 
+
+I was trying to think of which way would make randomized vehicles eventually a thing that could be implemented. Deleting each vehicle as they disappeared off screen would free up a place in "line" for an entirely new vehicle.
+
+In other words a queue of vehicles consisting of buses and cars initially with one of 3 colors. At the start of the game the queue is filled with random amounts of buses and cars with random colors. 
+
+Then as each car disappears it's replaced with a new random type with a random color. 
+
+Additional vehicle types and more than 3 colors notwithstanding. 
+
+I'm not sure how much refactoring I have to do to implement this new approach.
+
+It also occurred to me I've already implemented pretty much this exact thing in my semi-original game, "UFO invasion", with the way the bullets work. I'd be doing the same thing but without the spacebar to activate the rectangles and some other mechanism to "fire" the rectangles so they move across the screen. But it's all there: spawning into a group and a particular screen location, moving across the screen at a specific speed, and getting deleted from memory after hitting the edge of the screen. I should really just copy that. 
+
+---
 
 With my lanes solution in place it was fortunately easy to re-adjust the height of the main traffic lane: 3 times the vehicle height plus 30. This way I can have 3 lanes of traffic with some space between each row of traffic. 
 

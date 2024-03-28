@@ -59,13 +59,14 @@ class Vehicle(GameRect, Sprite):
         
         if self.dir == "left":
             self.moving_left = self.dir
-            self.moveDirection(self.moving_left)
+            self.moveDirLeft()
         elif self.dir == "right":        
             self.moving_right = self.dir
-            self.moveDirection(self.moving_right)
+            self.moveDirRight()
         
     #def update(self):
-    def moveDirection(self, dir):
+    #def moveDirection(self, dir):
+    def moveDirLeft(self):
 #        if self.moving_right:
             
 #            if self.xpos <= float(cmn.SCREEN_WIDTH - self.width):
@@ -105,32 +106,33 @@ class Vehicle(GameRect, Sprite):
                 self.rect.left = cmn.SCREEN_WIDTH - 2
                 self.rect.x = cmn.SCREEN_WIDTH - 2
                 self.xpos = self.rect.x
-        elif dir == "right":
-            self.rect.x = self.xpos
-            #if self.xpos > 0:
-            #    self.xpos -= 3
+        #elif dir == "right":
+    def moveDirRight(self):
+        self.rect.x = self.xpos
+        #if self.xpos > 0:
+        #    self.xpos -= 3
+        #print(f"Current x position is {self.xpos}")
+        self.rect.right = -2
+        print(f"Current rect right value is {self.rect.right}")
+        if self.rect.right <  cmn.SCREEN_WIDTH:
+            self.rect.right += 3
+            self.xpos = self.rect.x
             #print(f"Current x position is {self.xpos}")
-            self.rect.right = -2
-            print(f"Current rect right value is {self.rect.right}")
-            if self.rect.right <  cmn.SCREEN_WIDTH:
-                self.rect.right += 3
-                self.xpos = self.rect.x
-                #print(f"Current x position is {self.xpos}")
-                #print(f"Current rect right value is {self.rect.right}")
-                #print(f"Current rect left value is {self.rect.left}")
-                #print(f"value of self.width * -1 is {self.width * -1}")
+            #print(f"Current rect right value is {self.rect.right}")
+            #print(f"Current rect left value is {self.rect.left}")
+            #print(f"value of self.width * -1 is {self.width * -1}")
 
-                print(f"value of self.rect.right is {self.rect.right} and value of cmn.SCREEN_WIDTH is {cmn.SCREEN_WIDTH}")
-            #elif self.rect.left <= 1:# or self.xpos <= 1.0:
-            
-            elif self.width  >= (cmn.SCREEN_WIDTH + self.width): #self.rect.left : #or self.rect.right <= 1:
-                #print(f"Value of SCREEN_WIDTH - self.rect.width is {float(SCREEN_WIDTH - self.width)}")
-                #print(f"Current x position is in else is {self.xpos}")
-                print(f"bool value of {self.width * -1} <= {self.rect.left} is {bool( self.width * -1 <= self.rect.left )}")                
-                #self.rect.right = cmn.SCREEN_WIDTH - 2
-                self.rect.right = -2
-                self.rect.x = -2
-                self.xpos = self.rect.x
+            print(f"value of self.rect.right is {self.rect.right} and value of cmn.SCREEN_WIDTH is {cmn.SCREEN_WIDTH}")
+        #elif self.rect.left <= 1:# or self.xpos <= 1.0:
+        
+        elif self.width  >= (cmn.SCREEN_WIDTH + self.width): #self.rect.left : #or self.rect.right <= 1:
+            #print(f"Value of SCREEN_WIDTH - self.rect.width is {float(SCREEN_WIDTH - self.width)}")
+            #print(f"Current x position is in else is {self.xpos}")
+            print(f"bool value of {self.width * -1} <= {self.rect.left} is {bool( self.width * -1 <= self.rect.left )}")                
+            #self.rect.right = cmn.SCREEN_WIDTH - 2
+            self.rect.right = -2
+            self.rect.x = -2
+            self.xpos = self.rect.x
 
 
 

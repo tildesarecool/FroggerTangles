@@ -67,7 +67,10 @@ class createLanes():
             0, # 0 px in from left side of screen
             self.sidewalkOne.ypos - self.sidewalkOne.height,#cmn.CENTER_Y,# - cmn.cellHeight * 2,#cmn.SCREEN_HEIGHT - (froggie.height * 6) - 20, # how many px up from bottom of screen
             cmn.SCREEN_WIDTH,# - 50, # the width of the screen minus 50 px
-            (cmn.vehicleHeight * 3) + 30, # 5 times the height of the frog. kind of arbitrary
+            
+            # below: set a vehicle height in common then multiplied that by 3. Then added 30. So there 
+            # can be verticle space between vehicles/top and bottom edge. I can always adjust it
+            (cmn.vehicleHeight * 3) + 30, 
             cmn.SILVER # predefined color
             )
    
