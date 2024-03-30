@@ -9,6 +9,15 @@ The green square is supposed to be the frog.
 
 ---
 
+I did a bunch of refactoring around the car spawning system: I'm hoping I'm working up to an approach that will allow me to spawn traffic lanes worth of vehicles at a time such that eventually there will be three car lanes - two moving right/left and one moving left/right. Or the other way around. I am also hoping to vary the vehicle type (car or bus) and go through a range of colors.
+
+Right now there's just one car moving right/left but it is smoothly scrolling in and out so that's an improvement. 
+
+Right now I'm having something of an issue with the initial x coordinate of this vehicle. But I think I have solution to that and when there's an endless queue of vehicles going across the position of the first car won't really be noticable. At least that's what I'm going with. Since it does respawn off the screen to the right.
+
+
+---
+
 I thought about this a little over night. I don't think I want to spawn in multiple vehicles like it is now. 
 
 Keeping in mind I only have 3 vehicles at the moment. In one continuous line of vehicles this wouldn't really be an issue. 

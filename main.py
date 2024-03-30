@@ -28,9 +28,9 @@ from pygame.sprite import Group
 from frog import Frog
 #from lanes import Lane
 from lanes import createLanes
+putInLanes = createLanes()
 
-
-from vehicles import createVehicles
+from vehicles import createVehicles, Vehicle
 
 pyg.init()
 
@@ -39,7 +39,7 @@ pyg.init()
 
 #dsp = pyg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))  # also known as the "surface"
 clock = pyg.time.Clock()
-FPS = 20
+FPS = 60
 
 
 
@@ -62,54 +62,80 @@ froggie = Frog(
 
 
 
-def addTraffic():
+#def addTraffic():
 
-    regCarRect = createVehicles.regCar.draw_rect()
-    regCarRect.y = cmn.SCREEN_HEIGHT - (cmn.cellHeight * 6) - 15
-    
-    regCarRect.left = cmn.SCREEN_WIDTH + createVehicles.regCar.width - 5
-    
-    createVehicles.regCar.ypos = regCarRect.y
-    createVehicles.regCar.xpos = regCarRect.x
-    
-    
-    createVehicles.regCar.draw()    
-    print(f"createVehicles.regCar.xpos is {createVehicles.regCar.ypos}")
-    print(f"regCarRect.x is {regCarRect.x}")
-    print(f"regCarRect.left is {regCarRect.left}")
-    print(f"regCarRect.right is {regCarRect.right}")
-    
+#    regCarRect = createVehicles.regCar.draw_rect()
+#    regCarRect.y = cmn.SCREEN_HEIGHT - (cmn.cellHeight * 6) - 15
+#    
+#    regCarRect.left = cmn.SCREEN_WIDTH + createVehicles.regCar.width - 5
+#    
+#    createVehicles.regCar.ypos = regCarRect.y
+#    createVehicles.regCar.xpos = regCarRect.x
+#    
+#    ###
+#    createVehicles.regCar.draw() 
+#    ###
+#
+####################################################
+#    regBusRect = createVehicles.regBus.draw_rect()
+#    regBusRect.y = regCarRect.y# + regCarRect.width
+#    
+#    regBusRect.left = regCarRect.right - regBusRect.width * 2
+#    
+#    createVehicles.regBus.ypos = regBusRect.y
+#    createVehicles.regBus.xpos = regBusRect.x
+#    createVehicles.regBus.draw() 
+####################################################
+#
+#    limeCarRect = createVehicles.LimeCar.draw_rect()
+#    limeCarRect.y = regBusRect.y
+#    
+#    limeCarRect.left = regBusRect.right - regBusRect.width * 2
+#    
+#    createVehicles.LimeCar.ypos = limeCarRect.y
+#    createVehicles.LimeCar.xpos = limeCarRect.x
 ###################################################
-    regBusRect = createVehicles.regBus.draw_rect()
-    regBusRect.y = regCarRect.y# + regCarRect.width
-    
-    regBusRect.left = regCarRect.right - regBusRect.width * 2
-    
-    createVehicles.regBus.ypos = regBusRect.y
-    createVehicles.regBus.xpos = regBusRect.x
-    createVehicles.regBus.draw()
-###################################################
-
-    limeCarRect = createVehicles.LimeCar.draw_rect()
-    limeCarRect.y = regBusRect.y
-    
-    limeCarRect.left = regBusRect.right - regBusRect.width * 2
-    
-    createVehicles.LimeCar.ypos = limeCarRect.y
-    createVehicles.LimeCar.xpos = limeCarRect.x
     
 #    print(f"createVehicles.LimeCar.xpos is {createVehicles.LimeCar.xpos}")
 #    print(f"limeCarRect.x is {limeCarRect.x}")
+        #    print(f"createVehicles.regCar.xpos is {createVehicles.regCar.ypos}")
+        #    print(f"regCarRect.x is {regCarRect.x}")
+        #    print(f"regCarRect.left is {regCarRect.left}")
+        #    print(f"regCarRect.right is {regCarRect.right}")
 
 
+def VehicleSpawner():
+    
+    # ideally this would a random vehicle type/color
+    RegCarRect = createVehicles.regCar.draw_rect()
+    Car = createVehicles.regCar
+    
+    #Car.ypos = putInLanes.laneOneRect.top + 10
+    RegCarRect.y = Car.ypos
+    
+    #Car.xpos = cmn.CENTER_X
+    RegCarRect.x = Car.xpos
+    #Car.color = cmn.AQUA
+    
+#    createVehicles.regCar.draw()
+    
+    
+#    print(f"createVehicles.regCar.xpos is {createVehicles.regCar.ypos}")
+#    print(f"regCarRect.x is {RegCarRect.x}")
+#    print(f"regCarRect.left is {RegCarRect.left}")
+#    print(f"regCarRect.right is {RegCarRect.right}")
+    
+    Car.moveDirLeft()
+    #Car.moveDirRight()
+    
 def main() -> None:
-    putInLanes = createLanes()
+
     
     vehicleGroup = Group()
     vehicleGroup.add(
-        createVehicles.regCar, 
-        createVehicles.regBus, 
-        createVehicles.LimeCar
+#        createVehicles.regCar, 
+#        createVehicles.regBus, 
+#        createVehicles.LimeCar
     )#, regBus)
 #    vehicleGroup.u
     
@@ -133,11 +159,13 @@ def main() -> None:
         #createLanes.laneOne.draw()
         
         putInLanes.drawLanes()
+#        putInLanes.sidewalkOne.rect.b
         
         
         #createLanes.EndZone.draw()
         
-        addTraffic()
+        #addTraffic()
+        VehicleSpawner()
         
         #createVehicles.regCar.draw()
         #regBus.draw()

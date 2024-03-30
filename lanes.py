@@ -55,7 +55,7 @@ class createLanes():
        
         self.sidewalkOne = Lane(
             0,
-            cmn.CENTER_Y - cmn.cellHeight * 2,
+            cmn.CENTER_Y - cmn.cellHeight * 1.2, # originally * 2
 
             cmn.SCREEN_WIDTH,
             cmn.cellHeight * 1.5,
@@ -87,7 +87,7 @@ class createLanes():
     def drawLanes(self):
 
         self.laneOne.ypos = (cmn.SCREEN_HEIGHT - self.laneOne.height - (cmn.cellHeight * 1.5))
-        laneOneRect = self.laneOne.draw_rect()
+        self.laneOneRect = self.laneOne.draw_rect()
         #laneOneRect.top = SideWalkRect.bottom + 1
          # self.laneOne.ypos + (self.sidewalkOne.width)
 
@@ -96,17 +96,18 @@ class createLanes():
 ################################################################
 
         #self.sidewalkOne.ypos = cmn.cellHeight * 2
-        SideWalkRect = self.sidewalkOne.draw_rect()
-        SideWalkRect.x = self.sidewalkOne.xpos
-        SideWalkRect.y = self.sidewalkOne.ypos
+        self.SideWalkRect = self.sidewalkOne.draw_rect()
+        self.SideWalkRect.x = self.sidewalkOne.xpos
+        self.SideWalkRect.y = self.sidewalkOne.ypos
         
         
-        laneOneRect.y = SideWalkRect.bottom
-        laneOneRect.x = self.laneOne.xpos
+        self.laneOneRect.y = self.SideWalkRect.bottom
+        self.laneOneRect.x = self.laneOne.xpos
         #laneOneRect.top = SideWalkRect.bottom
         
         
-        EndZoneRect = self.EndZone.draw_rect()
+        #EndZoneRect = self.EndZone.draw_rect()
+        self.EndZone.draw_rect()
                 
         #print(f"value of self.laneOneRect.top is {laneOneRect.top} and value of SideWalkRect.bottom is {SideWalkRect.bottom}")
         #print(f"value of self.laneOne.ypos is {self.laneOne.ypos}")
