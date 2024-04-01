@@ -153,14 +153,14 @@ class createVehicles():
     def __init__(self) -> None:
          pass
      
-    regCar = Vehicle(
-        0,
-        (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20 ,#putInLanes.laneOneRect.top + 10,
-        cmn.cellWidth * 3, 
-        cmn.vehicleHeight,
-        cmn.WHITE,
-        #"left".lower() # it works with "left" at least
-        )
+#    regCar = Vehicle(
+#        0,
+#        (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20 ,#putInLanes.laneOneRect.top + 10,
+#        cmn.cellWidth * 3, 
+#        cmn.vehicleHeight,
+#        cmn.WHITE,
+#        #"left".lower() # it works with "left" at least
+#        )
     
 #    if regCar.dir == "left":
 #        regCar.rect.left = cmn.SCREEN_WIDTH - 5

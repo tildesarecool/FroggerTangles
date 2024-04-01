@@ -31,6 +31,7 @@ from lanes import createLanes
 putInLanes = createLanes()
 
 from vehicles import createVehicles, Vehicle
+from trafficlanes import TopVehicleLane
 
 pyg.init()
 
@@ -104,39 +105,41 @@ froggie = Frog(
         #    print(f"regCarRect.right is {regCarRect.right}")
 
 
-def VehicleSpawner():
+#def VehicleSpawner():
     
     # ideally this would a random vehicle type/color
-    RegCarRect = createVehicles.regCar.draw_rect()
-    Car = createVehicles.regCar
-    
-    #Car.ypos = putInLanes.laneOneRect.top + 10
-    RegCarRect.y = Car.ypos
-    
-    #Car.xpos = cmn.CENTER_X
-    RegCarRect.x = Car.xpos
+#    RegCarRect = createVehicles.regCar.draw_rect()
+#    Car = createVehicles.regCar
+#    
+#    #Car.ypos = putInLanes.laneOneRect.top + 10
+#    RegCarRect.y = Car.ypos
+#    
+#    #Car.xpos = cmn.CENTER_X
+#    RegCarRect.x = Car.xpos
     #Car.color = cmn.AQUA
     
 #    createVehicles.regCar.draw()
     
-    
+    #createTopLane.produceVehics()
+    #.produceVehics()
 #    print(f"createVehicles.regCar.xpos is {createVehicles.regCar.ypos}")
 #    print(f"regCarRect.x is {RegCarRect.x}")
 #    print(f"regCarRect.left is {RegCarRect.left}")
 #    print(f"regCarRect.right is {RegCarRect.right}")
     
-    Car.moveDirLeft()
+    #Car.moveDirLeft()
     #Car.moveDirRight()
     
 def main() -> None:
 
-    
-    vehicleGroup = Group()
-    vehicleGroup.add(
-#        createVehicles.regCar, 
-#        createVehicles.regBus, 
-#        createVehicles.LimeCar
-    )#, regBus)
+    createTopLane = TopVehicleLane()
+    createTopLane.produceVehics()
+
+#    vehicleGroup.add(
+##        createVehicles.regCar, 
+##        createVehicles.regBus, 
+##        createVehicles.LimeCar
+#    )#, regBus)
 #    vehicleGroup.u
     
     disp = cmn.screenInfo() # DO NOT MOVE OR COMMENT THIS
@@ -160,12 +163,12 @@ def main() -> None:
         
         putInLanes.drawLanes()
 #        putInLanes.sidewalkOne.rect.b
-        
+        createTopLane.update()
         
         #createLanes.EndZone.draw()
         
         #addTraffic()
-        VehicleSpawner()
+        #VehicleSpawner()
         
         #createVehicles.regCar.draw()
         #regBus.draw()

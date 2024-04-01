@@ -9,6 +9,18 @@ The green square is supposed to be the frog.
 
 ---
 
+I've started the process of re-factoring such that I can create a bunch of vehicles and send them.
+
+Actually, I thought of the idea of pre-creating all the cars when the game launches so they're already in memory that simply sending them out as needed. This seems much better than having to create the vehicle, send it across the screen then delete it, then generate a nearly identical if not identical one. 
+
+So I started the process of trying to figure that out but it went wrong some where in the process: first I don't think I'm even doing that "pre-caching" as described correctly, and secondly I can send through the coordinates of the vehicle I have right now but the rectangle doesn't actually show up visible on the screen. I think I did too many steps at once so I have take a step back and do one step at a time. 
+
+I think I'm doing my rectangle creation and drawing in a very round-about and odd way.
+
+So that's the current status as of this update. The vehicle is invisible because I broken the draw process. But it otherwise works. 
+
+---
+
 I did a bunch of refactoring around the car spawning system: I'm hoping I'm working up to an approach that will allow me to spawn traffic lanes worth of vehicles at a time such that eventually there will be three car lanes - two moving right/left and one moving left/right. Or the other way around. I am also hoping to vary the vehicle type (car or bus) and go through a range of colors.
 
 Right now there's just one car moving right/left but it is smoothly scrolling in and out so that's an improvement. 
