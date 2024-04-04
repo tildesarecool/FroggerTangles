@@ -45,7 +45,7 @@ class Lane(GameRect):#, Sprite):
 #        self.height = height
 #        self.color = color
 
-        
+
 class createLanes():
     def __init__(self) -> None:
          # GPT Note:
@@ -55,7 +55,8 @@ class createLanes():
        
         self.sidewalkOne = Lane(
             0,
-            cmn.CENTER_Y - cmn.cellHeight * 1.2, # originally * 2
+            cmn.screen_rect.centery - 30, # cmn.screen_rect.centery - 30 works - still gap at 31
+            #cmn.CENTER_Y - cmn.cellHeight,# + 15,# * 1.2, # originally * 2
 
             cmn.SCREEN_WIDTH,
             cmn.cellHeight * 1.5,

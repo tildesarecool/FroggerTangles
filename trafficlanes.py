@@ -1,8 +1,11 @@
 from rectboilerplate import GameRect
 from common import Common
+from lanes import createLanes
+
 cmn = Common()
+putInLanes = createLanes()
 from pygame.sprite import Group
-from vehicles import createVehicles, Vehicle
+from vehicles import  Vehicle #createVehicles,
 
 
 # Idea 1: 
@@ -19,10 +22,14 @@ from vehicles import createVehicles, Vehicle
 # oh and something similar for log/turtle/alligator section in the upper half of the screen. haven't even thought about it yet.
 
 #still thinking about spacing between car spawning
+# draw_rect()?
 
 
-class TopVehicleLane():
-    def __init__(self) -> None:
+class TopVehicleLane(GameRect):
+    '''Create vehicles for the top lane of traffic'''
+    def __init__(self, xpos, ypos, width, height, color) -> None:
+        super().__init__(xpos, ypos, width, height, color)
+
         self.carLimit = 1
         self.carList = []
         self.vehicleGroup = Group()
@@ -39,49 +46,56 @@ class TopVehicleLane():
             cmn.AQUA,
         ]
         
-    #RegCarRect = createVehicles.regCar.draw_rect()
-    
-    
-    #Car.ypos = putInLanes.laneOneRect.top + 10
-    #RegCarRect.y = Car.ypos
-    
-    #Car.xpos = cmn.CENTER_X
-    #RegCarRect.x = Car.xpos
-        #self.produceVehics()
-        
 
-    def produceVehics(self):
-        
-        if len(self.vehicleGroup) < self.carLimit:
-            
-            self.newCar = Vehicle(
-                0,
-                (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20,
-                cmn.cellWidth * 3, 
-                cmn.vehicleHeight,
-                cmn.WHITE,
-                )
-            self.NewCarRect = self.newCar.draw_rect()
-            
-            self.NewCarRect.y = self.newCar.ypos
-            self.NewCarRect.x = self.newCar.xpos
+        self.newCar = Vehicle(
+            xpos,
+            ypos,
+            width,
+            height,
+            color
+        )
 
-            #self.newCar.moveDirLeft()
-            #self.newCar.draw()
-            
-            self.vehicleGroup.add(self.newCar)
-            self.carList.append(self.newCar)
-            print(f"length of the carList is {len(self.carList)}") # <= {self.rect.left} is {bool( self.width * -1 <= self.rect.left )}")
-            
+
+#        class createVehicles():
+#    def __init__(self) -> None:
+#        pass
+
+#        self.newCar = Vehicle(
+#        putInLanes.laneOne.top + 10,#0,
+#        (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20,
+#        cmn.cellWidth * 3, 
+#        cmn.vehicleHeight,
+#        cmn.WHITE,
+#        )
+
+    def draw(self):
+        
+#       not sure to use the draw_rect or just draw here        
+       self.rect = self.draw_rect()
+#        self.newCar.draw()
+       
+#       self.NewCarRect = self.newCar.rect
+#    
+#       self.NewCarRect.y = self.newCar.ypos
+#       self.NewCarRect.x = self.newCar.xpos
+        
+        #pass
+    
+    
     def update(self):
+        
         """move the vehicles across the screen"""
-        print(f"value of newcar xpos is  {self.newCar.xpos} and ypos {self.newCar.ypos}")        
-        self.newCar.draw()
         self.newCar.moveDirLeft()
+        #self.createVehicles().
+        #pass
+
+#        print(f"value of newcar xpos is  {self.newCar.xpos} and ypos {self.newCar.ypos}")        
+#        self.newCar.draw()
+#        self.newCar.moveDirLeft()
 
 #        self.x += self.settings.bullet_speed
 #        self.rect.x = self.x
-            
+
 
 class MiddleVehicleLane():
     def __init__(self) -> None:
@@ -92,3 +106,14 @@ class BottomVehicleLane():
         pass    
 
 
+#class createVehicles():
+#    def __init__(self) -> None:
+##        pass
+#        self.newCar = Vehicle(
+#        putInLanes.laneOne.top + 10,#0,
+#        (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20,
+#        cmn.cellWidth * 3, 
+#        cmn.vehicleHeight,
+#        cmn.WHITE,
+#        )
+        

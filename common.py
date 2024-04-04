@@ -28,7 +28,7 @@ class Common():
         self.CENTER_X = self.SCREEN_WIDTH // 2
         self.CENTER_Y = self.SCREEN_HEIGHT // 2
         
-        self.vehicleHeight = self.cellHeight * 1.2 # this was working as 1.5
+        self.vehicleHeight = self.cellHeight # this was working as 1.5
         
         self.screen_rect = self.screenInfo().get_rect()
 

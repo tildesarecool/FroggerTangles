@@ -28,13 +28,12 @@ from pygame.sprite import Group
 from frog import Frog
 #from lanes import Lane
 from lanes import createLanes
-putInLanes = createLanes()
 
-from vehicles import createVehicles, Vehicle
+putInLanes = createLanes()
+#from vehicles import Vehicle # createVehicles,
 from trafficlanes import TopVehicleLane
 
 pyg.init()
-
 
 
 
@@ -53,7 +52,14 @@ froggie = Frog(
     )
     #frogger = Frog(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 10, 100,  100, GREEN)
     
-    
+createTopLane = TopVehicleLane(
+    putInLanes.laneOne.xpos + 10,
+    #putInLanes.laneOneRect.top + 10,#0,
+    (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20,
+    cmn.cellWidth * 3, 
+    cmn.vehicleHeight,
+    cmn.WHITE,    
+)    
 
 
 
@@ -132,9 +138,9 @@ froggie = Frog(
     
 def main() -> None:
 
-    createTopLane = TopVehicleLane()
-    createTopLane.produceVehics()
-
+    #.createVehicles()
+#    createTopLane.draw()
+    
 #    vehicleGroup.add(
 ##        createVehicles.regCar, 
 ##        createVehicles.regBus, 
@@ -163,7 +169,10 @@ def main() -> None:
         
         putInLanes.drawLanes()
 #        putInLanes.sidewalkOne.rect.b
+
         createTopLane.update()
+        createTopLane.draw()
+#        createTopLane.update()
         
         #createLanes.EndZone.draw()
         
