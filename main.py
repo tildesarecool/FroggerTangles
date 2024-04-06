@@ -33,6 +33,7 @@ clock = pyg.time.Clock()
 FPS = 60
 
 
+#print(f"value of putInLanes.laneOne.rect.top is {putInLanes.laneOne.rect.top} while putInLanes.laneOne.ypos is {putInLanes.laneOne.ypos}")
 
 froggie = Frog(
     cmn.SCREEN_WIDTH // 2, 
@@ -44,13 +45,17 @@ froggie = Frog(
     #frogger = Frog(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 10, 100,  100, GREEN)
     # ypos of sidewalkone: 
     # cmn.screen_rect.centery - 30
+#
+# I guess i forgot about idea 2: I started to go back to the random spawning
+# i'm not random spawning cars, i'm creating cars and adding them to the list
+# then accessing the list of cars to send them across the screen
+#
 createTopLane = TopVehicleLane(
-    putInLanes.laneOne.xpos + 10,
-    #putInLanes.laneOneRect.top + 10,#0,
-    (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20,
-    cmn.cellWidth * 3, 
+    cmn.SCREEN_WIDTH + cmn.cellWidth * 2,
+    (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 50,
+    cmn.cellWidth * 2.5, 
     cmn.vehicleHeight,
-    cmn.WHITE,    
+    cmn.colorList[0],    
 )    
 
 

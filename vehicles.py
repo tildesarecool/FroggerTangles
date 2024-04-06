@@ -2,17 +2,12 @@
 #from common import dsp
 
 from rectboilerplate import GameRect
-
-#import pygame as pyg
-
 from pygame.sprite import Sprite
-
 from common import Common
 from lanes import createLanes
 
 cmn = Common()
 putInLanes = createLanes()
-
 
 class Vehicle(GameRect, Sprite): 
     def __init__(self, xpos, ypos, width, height, color) -> None: #, dir) -> None:
@@ -38,38 +33,45 @@ class Vehicle(GameRect, Sprite):
         self.StartLeftPos = self.width * -1 #0
         self.StartRightPos = cmn.SCREEN_WIDTH + 50 # should be 50 px to the right of the screen. right?
         
-        
         # I moved this from the draw method to this init() method and nothing is apparently broken 
         # so I'm going to leave it here.
         # I think this makes more sense since the draw() method is in the game loop
         # this  rect assignment is happening 60 times per second which seems uncessary.
-        self.rect = self.draw_rect()                
-#        self.rect = self.draw_rect()        
-        self.rect.left = cmn.SCREEN_WIDTH - self.width * 2
+#        self.rect = self.draw_rect()                
+##        self.rect = self.draw_rect()        
+#        self.rect.left = cmn.SCREEN_WIDTH - self.width * 2
 
     def draw(self):
         '''
         Drawing the vehicles. 
         '''
-        self.rect = self.draw()                
+        self.rect = self.draw_rect()                
+##        self.rect = self.draw_rect()        
+        #self.rect.left = cmn.SCREEN_WIDTH - self.width * 2
+        return self.rect
     def moveDirLeft(self):
-            
-        if self.rect.right > 0:# and self.rect.right < cmn.SCREEN_WIDTH:
+        self.drawIn = self.draw()
+        if self.drawIn.right > 0:
+        # if self.rect.right > 0:# and self.rect.right < cmn.SCREEN_WIDTH:
             #self.rect.left =  self.rect.width  + cmn.SCREEN_WIDTH
-            self.rect.right -= 3
-            self.xpos = self.rect.x
-            #print(f"Current x position is {self.xpos}")
-            #print(f"Current rect right value is {self.rect.right}")
-            #print(f"Current rect left value is {self.rect.left}")
-            #print(f"value of self.width * -1 is {self.width * -1}")
 
-        elif self.width * 2 * -1 <= self.rect.right : #or self.rect.right <= 1:
-            #print(f"Value of SCREEN_WIDTH - self.rect.width is {float(SCREEN_WIDTH - self.width)}")
-            #print(f"Current x position is in else is {self.xpos}")
+            self.drawIn.right -= 3
+            self.xpos = self.drawIn.x
+#            self.rect.right -= 3
+#            self.xpos = self.rect.x
+        elif self.width * 2 * -1 <= self.drawIn.right:
+#        elif self.width * 2 * -1 <= self.rect.right : #or self.rect.right <= 1:
+
+
             print(f"bool value of {self.width * -1} <= {self.rect.left} is {bool( self.width * -1 <= self.rect.left )}")                
-            self.rect.left = cmn.SCREEN_WIDTH - 2
-            self.rect.x = cmn.SCREEN_WIDTH - 2
-            self.xpos = self.rect.x
+
+            self.drawIn.left = cmn.SCREEN_WIDTH - 2
+            self.drawIn.x = cmn.SCREEN_WIDTH - 2
+            self.xpos = self.drawIn.x
+
+#            self.rect.left = cmn.SCREEN_WIDTH - 2
+#            self.rect.x = cmn.SCREEN_WIDTH - 2
+#            self.xpos = self.rect.x
         #elif dir == "right":
     def moveDirRight(self):
         if self.rect.left < cmn.SCREEN_WIDTH:
@@ -117,3 +119,9 @@ class Vehicle(GameRect, Sprite):
 #        cmn.LIME,
 ##        "left".lower()
 #    )
+            #print(f"Current x position is {self.xpos}")
+            #print(f"Current rect right value is {self.rect.right}")
+            #print(f"Current rect left value is {self.rect.left}")
+            #print(f"value of self.width * -1 is {self.width * -1}")
+            #print(f"Value of SCREEN_WIDTH - self.rect.width is {float(SCREEN_WIDTH - self.width)}")
+            #print(f"Current x position is in else is {self.xpos}")

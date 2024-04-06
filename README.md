@@ -9,6 +9,11 @@ The green square is supposed to be the frog.
 
 ---
 
+It doesn't feel like I have made a lot of progress. I have refactored a bit and ended up pretty much the point where I started functionally. I mean I have the vehicle moving right/left. Technically there's two vehicles but i didn't add any timing so one is just over lapping the other. I do believe I know where to go from where I am though: a method to create a bunch of car type vehicles - one for each predefined color - and add them all to a list and sprite group. That would just a utility function that runs as soon as the game runs or whatever. It just has to run once when the game starts is the point. Something roughly like pre-caching. Then a separate method or function for sending the vehicles across the screen with the timing.
+
+
+---
+
 I've started the process of re-factoring such that I can create a bunch of vehicles and send them.
 
 Actually, I thought of the idea of pre-creating all the cars when the game launches so they're already in memory that simply sending them out as needed. This seems much better than having to create the vehicle, send it across the screen then delete it, then generate a nearly identical if not identical one. 

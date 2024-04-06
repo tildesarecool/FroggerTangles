@@ -19,6 +19,20 @@ class Common():
         self.BLUEISH: str = (10, 150, 240)
         self.AQUA: str = '#00FFFF'
         
+        
+        self.colorList = [
+            self.BLACK, 
+            self.SILVER, 
+            self.GREY, 
+            self.GREEN, 
+            self.LITEBLUE,
+            self.LIME,
+            self.WHITE,
+            self.BLUEISH,
+            self.AQUA,
+        ]
+        
+        
         self.SCREEN_WIDTH = 800
         self.SCREEN_HEIGHT = 600
         

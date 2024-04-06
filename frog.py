@@ -2,13 +2,9 @@
 #from common import dsp
 
 from rectboilerplate import GameRect
-
 import pygame as pyg
-
 from pygame.sprite import Sprite
-
 from common import Common
-
 cmn = Common()
 
 #SCREEN_WIDTH = 800

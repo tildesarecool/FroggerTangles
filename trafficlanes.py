@@ -1,13 +1,3 @@
-from rectboilerplate import GameRect
-from common import Common
-from lanes import createLanes
-
-cmn = Common()
-putInLanes = createLanes()
-from pygame.sprite import Group
-from vehicles import  Vehicle #createVehicles,
-
-
 # Idea 1: 
 # create three (classes? one class with multiple methods?) for each of the three lanes of traffic:
 # upperlane, middle lane, lower lane
@@ -24,78 +14,69 @@ from vehicles import  Vehicle #createVehicles,
 #still thinking about spacing between car spawning
 # draw_rect()?
 
+#
+# I guess i forgot about idea 2 above. I started to go back to the random spawning
+# i'm not random spawning cars, i'm creating cars and adding them to the list
+# then accessing the list of cars to send them across the screen
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+from rectboilerplate import GameRect
+from common import Common
+from lanes import createLanes
+
+cmn = Common()
+putInLanes = createLanes()
+from pygame.sprite import Group
+from vehicles import  Vehicle #createVehicles,
 
 class TopVehicleLane(GameRect):
     '''Create vehicles for the top lane of traffic'''
     def __init__(self, xpos, ypos, width, height, color) -> None:
         super().__init__(xpos, ypos, width, height, color)
 
-        self.carLimit = 1
+        self.carLimit = 2
         self.carList = []
         self.vehicleGroup = Group()
         
-        self.colorList = [
-            cmn.BLACK, 
-            cmn.SILVER, 
-            cmn.GREY, 
-            cmn.GREEN, 
-            cmn.LITEBLUE,
-            cmn.LIME,
-            cmn.WHITE,
-            cmn.BLUEISH,
-            cmn.AQUA,
-        ]
+
+
+        i = 0
+        while i < self.carLimit:
+            self.newCar = Vehicle(
+                xpos,
+                ypos,
+                width,
+                height,
+                color
+                #self.colorList[i]
+            )
+            i += 1
+
+            self.carList.append(self.newCar)
         
-
-        self.newCar = Vehicle(
-            xpos,
-            ypos,
-            width,
-            height,
-            color
-        )
-
-
-#        class createVehicles():
-#    def __init__(self) -> None:
-#        pass
-
-#        self.newCar = Vehicle(
-#        putInLanes.laneOne.top + 10,#0,
-#        (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 20,
-#        cmn.cellWidth * 3, 
-#        cmn.vehicleHeight,
-#        cmn.WHITE,
-#        )
+        print(f"len of car list is {len(self.carList)}")
 
     def draw(self):
         
-#       not sure to use the draw_rect or just draw here        
-       #self.rect = self.draw_rect()
-       self.newCar.draw()
-#        self.newCar.draw()
-       
-#       self.NewCarRect = self.newCar.rect
-#    
-#       self.NewCarRect.y = self.newCar.ypos
-#       self.NewCarRect.x = self.newCar.xpos
-        
-        #pass
+        for car in self.carList:        
+            car.draw()
+            #self.newCar.draw()
     
     
     def update(self):
         
         """move the vehicles across the screen"""
-        self.newCar.moveDirLeft()
-        #self.createVehicles().
-        #pass
-
-#        print(f"value of newcar xpos is  {self.newCar.xpos} and ypos {self.newCar.ypos}")        
-#        self.newCar.draw()
-#        self.newCar.moveDirLeft()
-
-#        self.x += self.settings.bullet_speed
-#        self.rect.x = self.x
+        #self.newCar.moveDirLeft()
+        for car in self.carList:
+            car.moveDirLeft()
 
 
 class MiddleVehicleLane():
