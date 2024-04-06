@@ -19,7 +19,7 @@
 # i'm not random spawning cars, i'm creating cars and adding them to the list
 # then accessing the list of cars to send them across the screen
 #
-
+import pygame as pyg
 from rectboilerplate import GameRect
 from common import Common
 from lanes import createLanes
@@ -37,7 +37,7 @@ class TopVehicleLane(GameRect):
         self.carLimit = 2
         self.carList = []
         self.vehicleGroup = Group()
-
+#        pyg.time.set_timer(False,500)
         i = 0
         while i < self.carLimit:
             self.newCar = Vehicle(
@@ -46,7 +46,7 @@ class TopVehicleLane(GameRect):
                 width,
                 height,
                 'blue'#color
-                #self.colorList[i]
+                #cmn.colorList[i]
             )
             i += 1
 
