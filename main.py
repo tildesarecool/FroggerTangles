@@ -55,11 +55,8 @@ createTopLane = TopVehicleLane(
     (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 50,
     cmn.cellWidth * 2.5, 
     cmn.vehicleHeight,
-    cmn.colorList[0],    
+    #cmn.colorList[0],    
 )    
-
-
-
 
 #regBus.xpos = regCar.xpos - 60
 
