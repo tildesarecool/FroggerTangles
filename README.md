@@ -9,6 +9,16 @@ The green square is supposed to be the frog.
 
 ---
 
+I don't know how many times I need to learn this before it sinks in, but asking ChatGPT for help pretty much always ends in taking more time than it would have taken had I not bothered using it.
+
+Anyway, I'm going to archive my current set of files and start over from scratch. And this time I'll just GPT as a way to summarize documentation when necessary instead of just asking it about a specific script.
+
+I was trying to figure out how to use custom events or a timer to space out putting in vehicles. But it didn't work. In fact it's worse now than before.
+
+So the status of this readme file as of now is "I started over". If you want to see the last version of the script look in the "unnecessary backups" folder.
+
+---
+
 It doesn't feel like I have made a lot of progress. I have refactored a bit and ended up pretty much the point where I started functionally. I mean I have the vehicle moving right/left. Technically there's two vehicles but i didn't add any timing so one is just over lapping the other. I do believe I know where to go from where I am though: a method to create a bunch of car type vehicles - one for each predefined color - and add them all to a list and sprite group. That would just a utility function that runs as soon as the game runs or whatever. It just has to run once when the game starts is the point. Something roughly like pre-caching. Then a separate method or function for sending the vehicles across the screen with the timing.
 
 

@@ -50,13 +50,13 @@ froggie = Frog(
 # i'm not random spawning cars, i'm creating cars and adding them to the list
 # then accessing the list of cars to send them across the screen
 #
-createTopLane = TopVehicleLane(
-    cmn.SCREEN_WIDTH + cmn.cellWidth * 2,
-    (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 50,
-    cmn.cellWidth * 2.5, 
-    cmn.vehicleHeight,
-    #cmn.colorList[0],    
-)    
+
+
+
+
+
+
+
 
 #regBus.xpos = regCar.xpos - 60
 
@@ -141,10 +141,27 @@ def main() -> None:
 ##        createVehicles.LimeCar
 #    )#, regBus)
 #    vehicleGroup.u
+    '''
+    ypos
+    width
+    height
+    color_list
+    '''
+    createTopLane = TopVehicleLane(
+        cmn.SCREEN_WIDTH + cmn.cellWidth * 2,
+        (cmn.CENTER_Y - cmn.cellHeight ) + cmn.cellHeight  + 50,
+        
+        
+        cmn.cellWidth * 2.5, 
+        cmn.vehicleHeight,
+        cmn.colorList,    
+    )    
     
     disp = cmn.screenInfo() # DO NOT MOVE OR COMMENT THIS
     
     while True:
+        delta_time = createTopLane.clock.tick(60)  # Get the time passed since the last frame
+
         for event in pyg.event.get():
             if event.type == pyg.QUIT:
                     pyg.quit()
@@ -152,6 +169,7 @@ def main() -> None:
             elif event.type == pyg.KEYDOWN and event.key == pyg.K_q:
                 pyg.quit()
                 return
+#            createTopLane.handle_event(event)
         #dsp.fill((10, 150, 240))
 
         disp.fill(cmn.BLUEISH)
@@ -162,20 +180,19 @@ def main() -> None:
         #createLanes.laneOne.draw()
         
         putInLanes.drawLanes()
-#        putInLanes.sidewalkOne.rect.b
-
-        createTopLane.update()
+        
+#        if createTopLane.vehicle_spawned:
+#            createTopLane.move_vehicles()
+#            createTopLane.draw()
+#            createTopLane.vehicle_spawned = False
+        
+        #createTopLane.handle_vehicle_movement()
+        createTopLane.handle_vehicle_movement(delta_time)
         createTopLane.draw()
+
+#        createTopLane.handle_vehicle_spawning()
 #        createTopLane.update()
-        
-        #createLanes.EndZone.draw()
-        
-        #addTraffic()
-        #VehicleSpawner()
-        
-        #createVehicles.regCar.draw()
-        #regBus.draw()
-        
+#        createTopLane.draw()
 
         froggie.update()
         
