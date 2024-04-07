@@ -9,6 +9,42 @@ The green square is supposed to be the frog.
 
 ---
 
+I've basically started over, at least for the vehicle class. I kept the "common" class, the frog class and the rectangle boiler plate class. Then cleaned up as much left over commented out code as possible in main.py and all the other files. I'm glad I spent so much time unsuccessfully working on this though or this re-re-refactoring would have been much harder.
+
+So far I already like the current results much more than the prior results: I have the first car going across the screen and at a specified moment start a second car across the screen. I've creating these two cars using a while loop in the vehicles.py file and adding them both to a list then in main.py calling the draw and moveDirLeft() methods on both using the subscript like this:
+
+```Python
+        carList[0].draw()
+        carList[0].moveDirLeft()
+```
+
+It's working but it doesn't seem like it will scale very well if at all.
+
+I've also re-done the window size to be multiples of 320 x 240. I'm hoping I can figure out a way to have it to evenly scale to different sizes of the screen. I might end up deciding on a different window size ratio. I haven't decided yet.
+
+Here's my method of creating those two cars:
+
+```Python
+carCount = 0
+carList = []    
+
+while carCount <= 1:
+    newCar = Vehicle(
+        cmn.screen_rect.right + cmn.cellWidth * 2, 
+        cmn.screen_rect.centery,
+        cmn.cellWidth * 2,
+        cmn.vehicleHeight,
+        cmn.colorList[carCount]
+        )
+    carCount += 1
+    carList.append(newCar)
+```
+I actually have a list of 9 colors. I was going to create car, one for each color. The obvious flaw in this being one of those cars will be the same as the fill color and thus invisible. But minor detail for later. Easiest way to prevent that is to define a fill color in the common class and use that for the fill color then use a if statement to skip over the "fill color" in the common class. I mean I assume there's superior ways to do it.
+
+Overall I'm glad I took this step to do a major re-factoring. 
+
+---
+
 I don't know how many times I need to learn this before it sinks in, but asking ChatGPT for help pretty much always ends in taking more time than it would have taken had I not bothered using it.
 
 Anyway, I'm going to archive my current set of files and start over from scratch. And this time I'll just GPT as a way to summarize documentation when necessary instead of just asking it about a specific script.

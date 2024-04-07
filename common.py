@@ -8,6 +8,8 @@ pyg.init()
 class Common():
     '''Command variables and settings'''
     def __init__(self):
+
+        self.FPS = 60
         
         self.BLACK: str = '#000000'
         self.SILVER: str = '#C0C0C0'
@@ -18,7 +20,6 @@ class Common():
         self.WHITE: str = '#FFFFFF'
         self.BLUEISH: str = (10, 150, 240)
         self.AQUA: str = '#00FFFF'
-        
         
         self.colorList = [
             self.BLACK, 
@@ -32,9 +33,8 @@ class Common():
             self.AQUA,
         ]
         
-        
-        self.SCREEN_WIDTH = 800
-        self.SCREEN_HEIGHT = 600
+        self.SCREEN_WIDTH = 320 * 3
+        self.SCREEN_HEIGHT = 240 * 3
         
         self.cellWidth = 50
         self.cellHeight = 50
@@ -43,15 +43,13 @@ class Common():
         self.CENTER_Y = self.SCREEN_HEIGHT // 2
         
         self.vehicleHeight = self.cellHeight # this was working as 1.5
-        
-        self.screen_rect = self.screenInfo().get_rect()
 
-    def screenInfo(self):
         self.dsp = pyg.display.set_mode(
                 (
                     self.SCREEN_WIDTH, 
                     self.SCREEN_HEIGHT
                 )
             )
-        return self.dsp
-    
+        
+        self.screen_rect = self.dsp.get_rect()
+
