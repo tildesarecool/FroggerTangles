@@ -26,10 +26,10 @@ class Common():
         
         self.colorList = [
             self.BLACK, 
+            self.LITEBLUE,
             self.SILVER, 
             self.GREY, 
             self.GREEN, 
-            self.LITEBLUE,
             self.LIME,
             self.WHITE,
             self.BLUEISH,

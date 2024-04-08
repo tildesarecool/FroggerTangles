@@ -9,6 +9,44 @@ The green square is supposed to be the frog.
 
 ---
 
+This is the first day since the latest archival/refactor started as mentioned below. I'd like to believe I've made a lot of progress but I'm kind of on the fence if I have.
+
+I have made progress in the sense I'm programmatically bringing in vehicles using elements of a list rather than specific element numbers. I don't know if that makes sense or not.
+
+I mean I'm saying carList[vehic].xpos rather than either carList[0].xpos or normalCar.xpos. Something like that. I'm iterating through an existing list of vehicle objects rather than address one specific vehicle object at at a time. It may not sound impressive but it's taken a long time to get to this point. And I am putting 3 vehicles up on the screen now. I mean they're a little "jiggly" and I can't seem to go higher than 3 and also one of them randomly changes color (or the z-order is messed up?). But it's a lot further than I was yesterday so I'm trying to embrace it.
+
+Here's the most signifcant bit of the past 4 or so hours. See if you can figure out what it's doing. I'm only somewhat sure I know.
+
+```Python
+        for vehic in range(NumberOfCars):
+            carList[vehic].moveDirLeft()
+            
+            if  carList[vehic].xpos - vehicTracker == cmn.screen_rect.right - (cmn.cellWidth * 2):
+                vehicTracker = 0
+                nextCarStart = True
+            elif carList[vehic].xpos - 1 == cmn.screen_rect.right - (cmn.cellWidth * 2) :
+                vehicTracker = 1
+                nextCarStart = True
+            elif carList[vehic].xpos - 2 == cmn.screen_rect.right - (cmn.cellWidth * 2) :
+                vehicTracker = 2
+                nextCarStart = True
+            elif carList[vehic].xpos - 3 == cmn.screen_rect.right - (cmn.cellWidth * 2):
+                vehicTracker = 3
+                nextCarStart = True
+            if nextCarStart:
+                if vehic <= 2: # I need to take this out
+
+                    print(f"carList[vehic].xpos evaluates to {carList[vehic].xpos - 2} and cmn.screen_rect.right - (cmn.cellWidth * 2) is {cmn.screen_rect.right - (cmn.cellWidth * 2)} for vehic number {vehic}")
+                    if carList[vehic].xpos - vehicTracker == cmn.screen_rect.right - (cmn.cellWidth * 2): # and carList[vehic].xpos != carList[vehic - 1].xpos:
+
+                        if vehic + 1 < NumberOfCars:
+                            carList[vehic + 1].xpos = carList[vehic].xpos + cmn.cellWidth * 3
+                            print(f"bool(carList[vehic].draw()) evaluates to {bool(carList[vehic].draw())} for vehic number {vehic}")
+                            nextCarStart = False                            
+```
+
+---
+
 I've basically started over, at least for the vehicle class. I kept the "common" class, the frog class and the rectangle boiler plate class. Then cleaned up as much left over commented out code as possible in main.py and all the other files. I'm glad I spent so much time unsuccessfully working on this though or this re-re-refactoring would have been much harder.
 
 So far I already like the current results much more than the prior results: I have the first car going across the screen and at a specified moment start a second car across the screen. I've creating these two cars using a while loop in the vehicles.py file and adding them both to a list then in main.py calling the draw and moveDirLeft() methods on both using the subscript like this:
