@@ -2,6 +2,7 @@ import pygame as pyg
 #from lanes import Lane
 pyg.init()
 
+
 # Initialize pygame and create the display surface
 #mainLane = Lane()
 
@@ -20,6 +21,8 @@ class Common():
         self.WHITE: str = '#FFFFFF'
         self.BLUEISH: str = (10, 150, 240)
         self.AQUA: str = '#00FFFF'
+        
+        self.windowFillColor = self.BLUEISH
         
         self.colorList = [
             self.BLACK, 

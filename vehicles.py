@@ -48,14 +48,17 @@ carList = []
 
 #for car in cmn.colorList:
 #cmn.SCREEN_WIDTH + newCar.width
-while carCount <= 1:
-    newCar = Vehicle(
-        cmn.screen_rect.right + cmn.cellWidth * 2, 
-        cmn.screen_rect.centery,
-        cmn.cellWidth * 2,
-        cmn.vehicleHeight,
-        cmn.colorList[carCount]
-        )
-    carCount += 1
-    carList.append(newCar)
+while carCount <= 2:
+    if cmn.colorList[carCount] != cmn.windowFillColor:
+        newCar = Vehicle(
+            cmn.screen_rect.right + cmn.cellWidth * 2, 
+            cmn.screen_rect.centery,
+            cmn.cellWidth * 2,
+            cmn.vehicleHeight,
+            cmn.colorList[carCount]
+            )
+        carCount += 1
+        carList.append(newCar)
+    print(f"length of carlist is {len(carList)}")
+    
 
